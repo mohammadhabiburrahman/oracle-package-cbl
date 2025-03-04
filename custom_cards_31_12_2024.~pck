@@ -235,12 +235,10 @@ CREATE OR REPLACE PACKAGE BODY custom_cards IS
 	BEGIN
 		IF pan LIKE '3%'
 		THEN
-			RETURN REPLACE(pan, substr(pan, 7, 5), '*****');
-		ELSIF pan LIKE '7%'
-		THEN
-			RETURN REPLACE(pan, substr(pan, 7, 8), '******');
+			RETURN REPLACE(pan, substr(pan, 6, 6), '*****');
+		
 		ELSE
-			RETURN REPLACE(pan, substr(pan, 7, 6), '******');
+			RETURN REPLACE(pan, substr(pan, 6, 7), '*****');
 		END IF;
 	END;
 	FUNCTION get_ltst_crd_frm_card(p_card_no VARCHAR2) RETURN VARCHAR2 IS
